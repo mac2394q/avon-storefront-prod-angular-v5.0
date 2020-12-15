@@ -1,0 +1,42 @@
+import { Injectable, } from '@angular/core';
+import { from } from 'rxjs';
+import { DefaultComponentHandler } from './default-component.handler';
+import { switchMap } from 'rxjs/operators';
+import * as i0 from "@angular/core";
+import * as i1 from "./default-component.handler";
+/**
+ * Lazy component handler used for launching lazy loaded cms components implemented
+ * as native Angular components.
+ */
+export class LazyComponentHandler {
+    constructor(defaultHandler) {
+        this.defaultHandler = defaultHandler;
+    }
+    /**
+     * We want to mach dynamic import signature () => import('')
+     */
+    hasMatch(componentMapping) {
+        return (typeof componentMapping.component === 'function' &&
+            this.isNotClass(componentMapping.component));
+    }
+    isNotClass(symbol) {
+        const signature = symbol.toString().substr(0, 20).replace(' ', '');
+        return signature.startsWith('function()') || signature.startsWith('()=>');
+    }
+    getPriority() {
+        return -10 /* LOW */;
+    }
+    launcher(componentMapping, viewContainerRef, elementInjector, module) {
+        return from(componentMapping.component()).pipe(switchMap((component) => this.defaultHandler.launcher(Object.assign(Object.assign({}, componentMapping), { component }), viewContainerRef, elementInjector, module)));
+    }
+}
+LazyComponentHandler.ɵprov = i0.ɵɵdefineInjectable({ factory: function LazyComponentHandler_Factory() { return new LazyComponentHandler(i0.ɵɵinject(i1.DefaultComponentHandler)); }, token: LazyComponentHandler, providedIn: "root" });
+LazyComponentHandler.decorators = [
+    { type: Injectable, args: [{
+                providedIn: 'root',
+            },] }
+];
+LazyComponentHandler.ctorParameters = () => [
+    { type: DefaultComponentHandler }
+];
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoibGF6eS1jb21wb25lbnQuaGFuZGxlci5qcyIsInNvdXJjZVJvb3QiOiIiLCJzb3VyY2VzIjpbIi4uLy4uLy4uLy4uLy4uLy4uLy4uL3Byb2plY3RzL3N0b3JlZnJvbnRsaWIvc3JjL2Ntcy1zdHJ1Y3R1cmUvcGFnZS9jb21wb25lbnQvaGFuZGxlcnMvbGF6eS1jb21wb25lbnQuaGFuZGxlci50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQSxPQUFPLEVBR0wsVUFBVSxHQUlYLE1BQU0sZUFBZSxDQUFDO0FBRXZCLE9BQU8sRUFBRSxJQUFJLEVBQWMsTUFBTSxNQUFNLENBQUM7QUFDeEMsT0FBTyxFQUFFLHVCQUF1QixFQUFFLE1BQU0sNkJBQTZCLENBQUM7QUFDdEUsT0FBTyxFQUFFLFNBQVMsRUFBRSxNQUFNLGdCQUFnQixDQUFDOzs7QUFHM0M7OztHQUdHO0FBSUgsTUFBTSxPQUFPLG9CQUFvQjtJQUMvQixZQUFzQixjQUF1QztRQUF2QyxtQkFBYyxHQUFkLGNBQWMsQ0FBeUI7SUFBRyxDQUFDO0lBRWpFOztPQUVHO0lBQ0gsUUFBUSxDQUFDLGdCQUFxQztRQUM1QyxPQUFPLENBQ0wsT0FBTyxnQkFBZ0IsQ0FBQyxTQUFTLEtBQUssVUFBVTtZQUNoRCxJQUFJLENBQUMsVUFBVSxDQUFDLGdCQUFnQixDQUFDLFNBQVMsQ0FBQyxDQUM1QyxDQUFDO0lBQ0osQ0FBQztJQUVPLFVBQVUsQ0FBQyxNQUFXO1FBQzVCLE1BQU0sU0FBUyxHQUFHLE1BQU0sQ0FBQyxRQUFRLEVBQUUsQ0FBQyxNQUFNLENBQUMsQ0FBQyxFQUFFLEVBQUUsQ0FBQyxDQUFDLE9BQU8sQ0FBQyxHQUFHLEVBQUUsRUFBRSxDQUFDLENBQUM7UUFDbkUsT0FBTyxTQUFTLENBQUMsVUFBVSxDQUFDLFlBQVksQ0FBQyxJQUFJLFNBQVMsQ0FBQyxVQUFVLENBQUMsTUFBTSxDQUFDLENBQUM7SUFDNUUsQ0FBQztJQUVELFdBQVc7UUFDVCxxQkFBb0I7SUFDdEIsQ0FBQztJQUVELFFBQVEsQ0FDTixnQkFBcUMsRUFDckMsZ0JBQWtDLEVBQ2xDLGVBQTBCLEVBQzFCLE1BQXlCO1FBRXpCLE9BQU8sSUFBSSxDQUFDLGdCQUFnQixDQUFDLFNBQVMsRUFBRSxDQUFDLENBQUMsSUFBSSxDQUM1QyxTQUFTLENBQUMsQ0FBQyxTQUFTLEVBQUUsRUFBRSxDQUN0QixJQUFJLENBQUMsY0FBYyxDQUFDLFFBQVEsaUNBQ3JCLGdCQUFnQixLQUFFLFNBQVMsS0FDaEMsZ0JBQWdCLEVBQ2hCLGVBQWUsRUFDZixNQUFNLENBQ1AsQ0FDRixDQUNGLENBQUM7SUFDSixDQUFDOzs7O1lBekNGLFVBQVUsU0FBQztnQkFDVixVQUFVLEVBQUUsTUFBTTthQUNuQjs7O1lBVlEsdUJBQXVCIiwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0IHtcbiAgQ29tcG9uZW50UmVmLFxuICBFbGVtZW50UmVmLFxuICBJbmplY3RhYmxlLFxuICBJbmplY3RvcixcbiAgTmdNb2R1bGVSZWYsXG4gIFZpZXdDb250YWluZXJSZWYsXG59IGZyb20gJ0Bhbmd1bGFyL2NvcmUnO1xuaW1wb3J0IHsgQ21zQ29tcG9uZW50TWFwcGluZywgUHJpb3JpdHkgfSBmcm9tICdAc3BhcnRhY3VzL2NvcmUnO1xuaW1wb3J0IHsgZnJvbSwgT2JzZXJ2YWJsZSB9IGZyb20gJ3J4anMnO1xuaW1wb3J0IHsgRGVmYXVsdENvbXBvbmVudEhhbmRsZXIgfSBmcm9tICcuL2RlZmF1bHQtY29tcG9uZW50LmhhbmRsZXInO1xuaW1wb3J0IHsgc3dpdGNoTWFwIH0gZnJvbSAncnhqcy9vcGVyYXRvcnMnO1xuaW1wb3J0IHsgQ29tcG9uZW50SGFuZGxlciB9IGZyb20gJy4vY29tcG9uZW50LWhhbmRsZXInO1xuXG4vKipcbiAqIExhenkgY29tcG9uZW50IGhhbmRsZXIgdXNlZCBmb3IgbGF1bmNoaW5nIGxhenkgbG9hZGVkIGNtcyBjb21wb25lbnRzIGltcGxlbWVudGVkXG4gKiBhcyBuYXRpdmUgQW5ndWxhciBjb21wb25lbnRzLlxuICovXG5ASW5qZWN0YWJsZSh7XG4gIHByb3ZpZGVkSW46ICdyb290Jyxcbn0pXG5leHBvcnQgY2xhc3MgTGF6eUNvbXBvbmVudEhhbmRsZXIgaW1wbGVtZW50cyBDb21wb25lbnRIYW5kbGVyIHtcbiAgY29uc3RydWN0b3IocHJvdGVjdGVkIGRlZmF1bHRIYW5kbGVyOiBEZWZhdWx0Q29tcG9uZW50SGFuZGxlcikge31cblxuICAvKipcbiAgICogV2Ugd2FudCB0byBtYWNoIGR5bmFtaWMgaW1wb3J0IHNpZ25hdHVyZSAoKSA9PiBpbXBvcnQoJycpXG4gICAqL1xuICBoYXNNYXRjaChjb21wb25lbnRNYXBwaW5nOiBDbXNDb21wb25lbnRNYXBwaW5nKTogYm9vbGVhbiB7XG4gICAgcmV0dXJuIChcbiAgICAgIHR5cGVvZiBjb21wb25lbnRNYXBwaW5nLmNvbXBvbmVudCA9PT0gJ2Z1bmN0aW9uJyAmJlxuICAgICAgdGhpcy5pc05vdENsYXNzKGNvbXBvbmVudE1hcHBpbmcuY29tcG9uZW50KVxuICAgICk7XG4gIH1cblxuICBwcml2YXRlIGlzTm90Q2xhc3Moc3ltYm9sOiBhbnkpOiBib29sZWFuIHtcbiAgICBjb25zdCBzaWduYXR1cmUgPSBzeW1ib2wudG9TdHJpbmcoKS5zdWJzdHIoMCwgMjApLnJlcGxhY2UoJyAnLCAnJyk7XG4gICAgcmV0dXJuIHNpZ25hdHVyZS5zdGFydHNXaXRoKCdmdW5jdGlvbigpJykgfHwgc2lnbmF0dXJlLnN0YXJ0c1dpdGgoJygpPT4nKTtcbiAgfVxuXG4gIGdldFByaW9yaXR5KCk6IFByaW9yaXR5IHtcbiAgICByZXR1cm4gUHJpb3JpdHkuTE9XO1xuICB9XG5cbiAgbGF1bmNoZXIoXG4gICAgY29tcG9uZW50TWFwcGluZzogQ21zQ29tcG9uZW50TWFwcGluZyxcbiAgICB2aWV3Q29udGFpbmVyUmVmOiBWaWV3Q29udGFpbmVyUmVmLFxuICAgIGVsZW1lbnRJbmplY3Rvcj86IEluamVjdG9yLFxuICAgIG1vZHVsZT86IE5nTW9kdWxlUmVmPGFueT5cbiAgKTogT2JzZXJ2YWJsZTx7IGVsZW1lbnRSZWY6IEVsZW1lbnRSZWY7IGNvbXBvbmVudFJlZj86IENvbXBvbmVudFJlZjxhbnk+IH0+IHtcbiAgICByZXR1cm4gZnJvbShjb21wb25lbnRNYXBwaW5nLmNvbXBvbmVudCgpKS5waXBlKFxuICAgICAgc3dpdGNoTWFwKChjb21wb25lbnQpID0+XG4gICAgICAgIHRoaXMuZGVmYXVsdEhhbmRsZXIubGF1bmNoZXIoXG4gICAgICAgICAgeyAuLi5jb21wb25lbnRNYXBwaW5nLCBjb21wb25lbnQgfSxcbiAgICAgICAgICB2aWV3Q29udGFpbmVyUmVmLFxuICAgICAgICAgIGVsZW1lbnRJbmplY3RvcixcbiAgICAgICAgICBtb2R1bGVcbiAgICAgICAgKVxuICAgICAgKVxuICAgICk7XG4gIH1cbn1cbiJdfQ==

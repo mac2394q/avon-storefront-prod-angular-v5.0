@@ -1,0 +1,44 @@
+{
+  "name": "@spartacus/storefront",
+  "version": "3.0.0-next.6",
+  "homepage": "https://github.com/SAP/spartacus",
+  "keywords": [
+    "spartacus",
+    "storefront",
+    "angular"
+  ],
+  "license": "Apache-2.0",
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": "https://github.com/SAP/spartacus/tree/develop/projects/storefrontlib",
+  "dependencies": {
+    "tslib": "^2.0.0"
+  },
+  "peerDependencies": {
+    "@angular/common": "^10.1.0",
+    "@angular/compiler": "^10.1.0",
+    "@angular/core": "^10.1.0",
+    "@angular/forms": "^10.1.0",
+    "@angular/localize": "^10.1.0",
+    "@angular/platform-browser": "^10.1.0",
+    "@angular/router": "^10.1.0",
+    "@angular/service-worker": "^10.1.0",
+    "@ng-bootstrap/ng-bootstrap": "^7.0.0",
+    "@ng-select/ng-select": "^5.0.0",
+    "@ngrx/effects": "^10.0.0",
+    "@ngrx/store": "^10.0.0",
+    "@spartacus/core": "3.0.0-next.6",
+    "rxjs": "^6.6.0",
+    "zone.js": "^0.10.2",
+    "ngx-infinite-scroll": "^8.0.0"
+  },
+  "main": "bundles/spartacus-storefront.umd.js",
+  "module": "fesm2015/spartacus-storefront.js",
+  "es2015": "fesm2015/spartacus-storefront.js",
+  "esm2015": "esm2015/spartacus-storefront.js",
+  "fesm2015": "fesm2015/spartacus-storefront.js",
+  "typings": "spartacus-storefront.d.ts",
+  "metadata": "spartacus-storefront.metadata.json",
+  "sideEffects": false
+}

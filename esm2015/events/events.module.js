@@ -1,0 +1,12 @@
+import { NgModule } from '@angular/core';
+import { CartPageEventModule } from './cart/cart-page-event.module';
+import { PageEventModule } from './page/page-event.module';
+import { ProductPageEventModule } from './product/product-page-event.module';
+export class EventsModule {
+}
+EventsModule.decorators = [
+    { type: NgModule, args: [{
+                imports: [CartPageEventModule, PageEventModule, ProductPageEventModule],
+            },] }
+];
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiZXZlbnRzLm1vZHVsZS5qcyIsInNvdXJjZVJvb3QiOiIiLCJzb3VyY2VzIjpbIi4uLy4uLy4uLy4uL3Byb2plY3RzL3N0b3JlZnJvbnRsaWIvc3JjL2V2ZW50cy9ldmVudHMubW9kdWxlLnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBLE9BQU8sRUFBRSxRQUFRLEVBQUUsTUFBTSxlQUFlLENBQUM7QUFDekMsT0FBTyxFQUFFLG1CQUFtQixFQUFFLE1BQU0sK0JBQStCLENBQUM7QUFDcEUsT0FBTyxFQUFFLGVBQWUsRUFBRSxNQUFNLDBCQUEwQixDQUFDO0FBQzNELE9BQU8sRUFBRSxzQkFBc0IsRUFBRSxNQUFNLHFDQUFxQyxDQUFDO0FBSzdFLE1BQU0sT0FBTyxZQUFZOzs7WUFIeEIsUUFBUSxTQUFDO2dCQUNSLE9BQU8sRUFBRSxDQUFDLG1CQUFtQixFQUFFLGVBQWUsRUFBRSxzQkFBc0IsQ0FBQzthQUN4RSIsInNvdXJjZXNDb250ZW50IjpbImltcG9ydCB7IE5nTW9kdWxlIH0gZnJvbSAnQGFuZ3VsYXIvY29yZSc7XG5pbXBvcnQgeyBDYXJ0UGFnZUV2ZW50TW9kdWxlIH0gZnJvbSAnLi9jYXJ0L2NhcnQtcGFnZS1ldmVudC5tb2R1bGUnO1xuaW1wb3J0IHsgUGFnZUV2ZW50TW9kdWxlIH0gZnJvbSAnLi9wYWdlL3BhZ2UtZXZlbnQubW9kdWxlJztcbmltcG9ydCB7IFByb2R1Y3RQYWdlRXZlbnRNb2R1bGUgfSBmcm9tICcuL3Byb2R1Y3QvcHJvZHVjdC1wYWdlLWV2ZW50Lm1vZHVsZSc7XG5cbkBOZ01vZHVsZSh7XG4gIGltcG9ydHM6IFtDYXJ0UGFnZUV2ZW50TW9kdWxlLCBQYWdlRXZlbnRNb2R1bGUsIFByb2R1Y3RQYWdlRXZlbnRNb2R1bGVdLFxufSlcbmV4cG9ydCBjbGFzcyBFdmVudHNNb2R1bGUge31cbiJdfQ==

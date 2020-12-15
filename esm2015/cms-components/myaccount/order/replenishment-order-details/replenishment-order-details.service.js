@@ -1,0 +1,34 @@
+import { Injectable } from '@angular/core';
+import { RoutingService, UserReplenishmentOrderService, } from '@spartacus/core';
+import { distinctUntilChanged, map, shareReplay, switchMap, tap, } from 'rxjs/operators';
+import * as i0 from "@angular/core";
+import * as i1 from "@spartacus/core";
+export class ReplenishmentOrderDetailsService {
+    constructor(routingService, userReplenishmentOrderService) {
+        this.routingService = routingService;
+        this.userReplenishmentOrderService = userReplenishmentOrderService;
+        this.replenishmentOrderCode$ = this.routingService.getRouterState().pipe(map((routingData) => routingData.state.params.replenishmentOrderCode), distinctUntilChanged());
+        this.replenishmentOrderLoad$ = this.replenishmentOrderCode$.pipe(tap((replenishmentOrderCode) => {
+            if (Boolean(replenishmentOrderCode)) {
+                this.userReplenishmentOrderService.loadReplenishmentOrderDetails(replenishmentOrderCode);
+            }
+            else {
+                this.userReplenishmentOrderService.clearReplenishmentOrderDetails();
+            }
+        }), shareReplay({ bufferSize: 1, refCount: true }));
+    }
+    getOrderDetails() {
+        return this.replenishmentOrderLoad$.pipe(switchMap((_) => this.userReplenishmentOrderService.getReplenishmentOrderDetails()));
+    }
+}
+ReplenishmentOrderDetailsService.ɵprov = i0.ɵɵdefineInjectable({ factory: function ReplenishmentOrderDetailsService_Factory() { return new ReplenishmentOrderDetailsService(i0.ɵɵinject(i1.RoutingService), i0.ɵɵinject(i1.UserReplenishmentOrderService)); }, token: ReplenishmentOrderDetailsService, providedIn: "root" });
+ReplenishmentOrderDetailsService.decorators = [
+    { type: Injectable, args: [{
+                providedIn: 'root',
+            },] }
+];
+ReplenishmentOrderDetailsService.ctorParameters = () => [
+    { type: RoutingService },
+    { type: UserReplenishmentOrderService }
+];
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoicmVwbGVuaXNobWVudC1vcmRlci1kZXRhaWxzLnNlcnZpY2UuanMiLCJzb3VyY2VSb290IjoiIiwic291cmNlcyI6WyIuLi8uLi8uLi8uLi8uLi8uLi8uLi9wcm9qZWN0cy9zdG9yZWZyb250bGliL3NyYy9jbXMtY29tcG9uZW50cy9teWFjY291bnQvb3JkZXIvcmVwbGVuaXNobWVudC1vcmRlci1kZXRhaWxzL3JlcGxlbmlzaG1lbnQtb3JkZXItZGV0YWlscy5zZXJ2aWNlLnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBLE9BQU8sRUFBRSxVQUFVLEVBQUUsTUFBTSxlQUFlLENBQUM7QUFDM0MsT0FBTyxFQUVMLGNBQWMsRUFDZCw2QkFBNkIsR0FDOUIsTUFBTSxpQkFBaUIsQ0FBQztBQUV6QixPQUFPLEVBQ0wsb0JBQW9CLEVBQ3BCLEdBQUcsRUFDSCxXQUFXLEVBQ1gsU0FBUyxFQUNULEdBQUcsR0FDSixNQUFNLGdCQUFnQixDQUFDOzs7QUFLeEIsTUFBTSxPQUFPLGdDQUFnQztJQW1CM0MsWUFDWSxjQUE4QixFQUM5Qiw2QkFBNEQ7UUFENUQsbUJBQWMsR0FBZCxjQUFjLENBQWdCO1FBQzlCLGtDQUE2QixHQUE3Qiw2QkFBNkIsQ0FBK0I7UUFwQjlELDRCQUF1QixHQUFHLElBQUksQ0FBQyxjQUFjLENBQUMsY0FBYyxFQUFFLENBQUMsSUFBSSxDQUMzRSxHQUFHLENBQUMsQ0FBQyxXQUFXLEVBQUUsRUFBRSxDQUFDLFdBQVcsQ0FBQyxLQUFLLENBQUMsTUFBTSxDQUFDLHNCQUFzQixDQUFDLEVBQ3JFLG9CQUFvQixFQUFFLENBQ3ZCLENBQUM7UUFFUSw0QkFBdUIsR0FBRyxJQUFJLENBQUMsdUJBQXVCLENBQUMsSUFBSSxDQUNuRSxHQUFHLENBQUMsQ0FBQyxzQkFBOEIsRUFBRSxFQUFFO1lBQ3JDLElBQUksT0FBTyxDQUFDLHNCQUFzQixDQUFDLEVBQUU7Z0JBQ25DLElBQUksQ0FBQyw2QkFBNkIsQ0FBQyw2QkFBNkIsQ0FDOUQsc0JBQXNCLENBQ3ZCLENBQUM7YUFDSDtpQkFBTTtnQkFDTCxJQUFJLENBQUMsNkJBQTZCLENBQUMsOEJBQThCLEVBQUUsQ0FBQzthQUNyRTtRQUNILENBQUMsQ0FBQyxFQUNGLFdBQVcsQ0FBQyxFQUFFLFVBQVUsRUFBRSxDQUFDLEVBQUUsUUFBUSxFQUFFLElBQUksRUFBRSxDQUFDLENBQy9DLENBQUM7SUFLQyxDQUFDO0lBRUosZUFBZTtRQUNiLE9BQU8sSUFBSSxDQUFDLHVCQUF1QixDQUFDLElBQUksQ0FDdEMsU0FBUyxDQUFDLENBQUMsQ0FBQyxFQUFFLEVBQUUsQ0FDZCxJQUFJLENBQUMsNkJBQTZCLENBQUMsNEJBQTRCLEVBQUUsQ0FDbEUsQ0FDRixDQUFDO0lBQ0osQ0FBQzs7OztZQWpDRixVQUFVLFNBQUM7Z0JBQ1YsVUFBVSxFQUFFLE1BQU07YUFDbkI7OztZQWRDLGNBQWM7WUFDZCw2QkFBNkIiLCJzb3VyY2VzQ29udGVudCI6WyJpbXBvcnQgeyBJbmplY3RhYmxlIH0gZnJvbSAnQGFuZ3VsYXIvY29yZSc7XG5pbXBvcnQge1xuICBSZXBsZW5pc2htZW50T3JkZXIsXG4gIFJvdXRpbmdTZXJ2aWNlLFxuICBVc2VyUmVwbGVuaXNobWVudE9yZGVyU2VydmljZSxcbn0gZnJvbSAnQHNwYXJ0YWN1cy9jb3JlJztcbmltcG9ydCB7IE9ic2VydmFibGUgfSBmcm9tICdyeGpzJztcbmltcG9ydCB7XG4gIGRpc3RpbmN0VW50aWxDaGFuZ2VkLFxuICBtYXAsXG4gIHNoYXJlUmVwbGF5LFxuICBzd2l0Y2hNYXAsXG4gIHRhcCxcbn0gZnJvbSAncnhqcy9vcGVyYXRvcnMnO1xuXG5ASW5qZWN0YWJsZSh7XG4gIHByb3ZpZGVkSW46ICdyb290Jyxcbn0pXG5leHBvcnQgY2xhc3MgUmVwbGVuaXNobWVudE9yZGVyRGV0YWlsc1NlcnZpY2Uge1xuICBwcm90ZWN0ZWQgcmVwbGVuaXNobWVudE9yZGVyQ29kZSQgPSB0aGlzLnJvdXRpbmdTZXJ2aWNlLmdldFJvdXRlclN0YXRlKCkucGlwZShcbiAgICBtYXAoKHJvdXRpbmdEYXRhKSA9PiByb3V0aW5nRGF0YS5zdGF0ZS5wYXJhbXMucmVwbGVuaXNobWVudE9yZGVyQ29kZSksXG4gICAgZGlzdGluY3RVbnRpbENoYW5nZWQoKVxuICApO1xuXG4gIHByb3RlY3RlZCByZXBsZW5pc2htZW50T3JkZXJMb2FkJCA9IHRoaXMucmVwbGVuaXNobWVudE9yZGVyQ29kZSQucGlwZShcbiAgICB0YXAoKHJlcGxlbmlzaG1lbnRPcmRlckNvZGU6IHN0cmluZykgPT4ge1xuICAgICAgaWYgKEJvb2xlYW4ocmVwbGVuaXNobWVudE9yZGVyQ29kZSkpIHtcbiAgICAgICAgdGhpcy51c2VyUmVwbGVuaXNobWVudE9yZGVyU2VydmljZS5sb2FkUmVwbGVuaXNobWVudE9yZGVyRGV0YWlscyhcbiAgICAgICAgICByZXBsZW5pc2htZW50T3JkZXJDb2RlXG4gICAgICAgICk7XG4gICAgICB9IGVsc2Uge1xuICAgICAgICB0aGlzLnVzZXJSZXBsZW5pc2htZW50T3JkZXJTZXJ2aWNlLmNsZWFyUmVwbGVuaXNobWVudE9yZGVyRGV0YWlscygpO1xuICAgICAgfVxuICAgIH0pLFxuICAgIHNoYXJlUmVwbGF5KHsgYnVmZmVyU2l6ZTogMSwgcmVmQ291bnQ6IHRydWUgfSlcbiAgKTtcblxuICBjb25zdHJ1Y3RvcihcbiAgICBwcm90ZWN0ZWQgcm91dGluZ1NlcnZpY2U6IFJvdXRpbmdTZXJ2aWNlLFxuICAgIHByb3RlY3RlZCB1c2VyUmVwbGVuaXNobWVudE9yZGVyU2VydmljZTogVXNlclJlcGxlbmlzaG1lbnRPcmRlclNlcnZpY2VcbiAgKSB7fVxuXG4gIGdldE9yZGVyRGV0YWlscygpOiBPYnNlcnZhYmxlPFJlcGxlbmlzaG1lbnRPcmRlcj4ge1xuICAgIHJldHVybiB0aGlzLnJlcGxlbmlzaG1lbnRPcmRlckxvYWQkLnBpcGUoXG4gICAgICBzd2l0Y2hNYXAoKF8pID0+XG4gICAgICAgIHRoaXMudXNlclJlcGxlbmlzaG1lbnRPcmRlclNlcnZpY2UuZ2V0UmVwbGVuaXNobWVudE9yZGVyRGV0YWlscygpXG4gICAgICApXG4gICAgKTtcbiAgfVxufVxuIl19

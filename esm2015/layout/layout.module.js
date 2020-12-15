@@ -1,0 +1,16 @@
+import { NgModule } from '@angular/core';
+import { provideConfig } from '@spartacus/core';
+import { OutletRefModule } from '../cms-structure/outlet/outlet-ref/outlet-ref.module';
+import { defaultLayoutConfig } from './config/default-layout.config';
+import { DirectionModule } from './direction/direction.module';
+import { LaunchDialogModule } from './launch-dialog/index';
+export class LayoutModule {
+}
+LayoutModule.decorators = [
+    { type: NgModule, args: [{
+                imports: [OutletRefModule, LaunchDialogModule.forRoot(), DirectionModule],
+                providers: [provideConfig(defaultLayoutConfig)],
+                exports: [OutletRefModule],
+            },] }
+];
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoibGF5b3V0Lm1vZHVsZS5qcyIsInNvdXJjZVJvb3QiOiIiLCJzb3VyY2VzIjpbIi4uLy4uLy4uLy4uL3Byb2plY3RzL3N0b3JlZnJvbnRsaWIvc3JjL2xheW91dC9sYXlvdXQubW9kdWxlLnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBLE9BQU8sRUFBRSxRQUFRLEVBQUUsTUFBTSxlQUFlLENBQUM7QUFDekMsT0FBTyxFQUFFLGFBQWEsRUFBRSxNQUFNLGlCQUFpQixDQUFDO0FBQ2hELE9BQU8sRUFBRSxlQUFlLEVBQUUsTUFBTSxzREFBc0QsQ0FBQztBQUN2RixPQUFPLEVBQUUsbUJBQW1CLEVBQUUsTUFBTSxnQ0FBZ0MsQ0FBQztBQUNyRSxPQUFPLEVBQUUsZUFBZSxFQUFFLE1BQU0sOEJBQThCLENBQUM7QUFDL0QsT0FBTyxFQUFFLGtCQUFrQixFQUFFLE1BQU0sdUJBQXVCLENBQUM7QUFPM0QsTUFBTSxPQUFPLFlBQVk7OztZQUx4QixRQUFRLFNBQUM7Z0JBQ1IsT0FBTyxFQUFFLENBQUMsZUFBZSxFQUFFLGtCQUFrQixDQUFDLE9BQU8sRUFBRSxFQUFFLGVBQWUsQ0FBQztnQkFDekUsU0FBUyxFQUFFLENBQUMsYUFBYSxDQUFDLG1CQUFtQixDQUFDLENBQUM7Z0JBQy9DLE9BQU8sRUFBRSxDQUFDLGVBQWUsQ0FBQzthQUMzQiIsInNvdXJjZXNDb250ZW50IjpbImltcG9ydCB7IE5nTW9kdWxlIH0gZnJvbSAnQGFuZ3VsYXIvY29yZSc7XG5pbXBvcnQgeyBwcm92aWRlQ29uZmlnIH0gZnJvbSAnQHNwYXJ0YWN1cy9jb3JlJztcbmltcG9ydCB7IE91dGxldFJlZk1vZHVsZSB9IGZyb20gJy4uL2Ntcy1zdHJ1Y3R1cmUvb3V0bGV0L291dGxldC1yZWYvb3V0bGV0LXJlZi5tb2R1bGUnO1xuaW1wb3J0IHsgZGVmYXVsdExheW91dENvbmZpZyB9IGZyb20gJy4vY29uZmlnL2RlZmF1bHQtbGF5b3V0LmNvbmZpZyc7XG5pbXBvcnQgeyBEaXJlY3Rpb25Nb2R1bGUgfSBmcm9tICcuL2RpcmVjdGlvbi9kaXJlY3Rpb24ubW9kdWxlJztcbmltcG9ydCB7IExhdW5jaERpYWxvZ01vZHVsZSB9IGZyb20gJy4vbGF1bmNoLWRpYWxvZy9pbmRleCc7XG5cbkBOZ01vZHVsZSh7XG4gIGltcG9ydHM6IFtPdXRsZXRSZWZNb2R1bGUsIExhdW5jaERpYWxvZ01vZHVsZS5mb3JSb290KCksIERpcmVjdGlvbk1vZHVsZV0sXG4gIHByb3ZpZGVyczogW3Byb3ZpZGVDb25maWcoZGVmYXVsdExheW91dENvbmZpZyldLFxuICBleHBvcnRzOiBbT3V0bGV0UmVmTW9kdWxlXSxcbn0pXG5leHBvcnQgY2xhc3MgTGF5b3V0TW9kdWxlIHt9XG4iXX0=

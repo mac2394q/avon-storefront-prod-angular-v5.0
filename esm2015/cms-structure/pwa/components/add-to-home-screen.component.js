@@ -1,0 +1,21 @@
+import { Directive } from '@angular/core';
+import { AddToHomeScreenService } from '../services/add-to-home-screen.service';
+// tslint:disable-next-line:directive-class-suffix
+export class AddToHomeScreenComponent {
+    constructor(addToHomeScreenService) {
+        this.addToHomeScreenService = addToHomeScreenService;
+    }
+    ngOnInit() {
+        this.canPrompt$ = this.addToHomeScreenService.canPrompt$;
+    }
+    prompt() {
+        this.addToHomeScreenService.firePrompt();
+    }
+}
+AddToHomeScreenComponent.decorators = [
+    { type: Directive }
+];
+AddToHomeScreenComponent.ctorParameters = () => [
+    { type: AddToHomeScreenService }
+];
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiYWRkLXRvLWhvbWUtc2NyZWVuLmNvbXBvbmVudC5qcyIsInNvdXJjZVJvb3QiOiIiLCJzb3VyY2VzIjpbIi4uLy4uLy4uLy4uLy4uLy4uL3Byb2plY3RzL3N0b3JlZnJvbnRsaWIvc3JjL2Ntcy1zdHJ1Y3R1cmUvcHdhL2NvbXBvbmVudHMvYWRkLXRvLWhvbWUtc2NyZWVuLmNvbXBvbmVudC50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQSxPQUFPLEVBQVUsU0FBUyxFQUFFLE1BQU0sZUFBZSxDQUFDO0FBRWxELE9BQU8sRUFBRSxzQkFBc0IsRUFBRSxNQUFNLHdDQUF3QyxDQUFDO0FBR2hGLGtEQUFrRDtBQUNsRCxNQUFNLE9BQWdCLHdCQUF3QjtJQUU1QyxZQUFzQixzQkFBOEM7UUFBOUMsMkJBQXNCLEdBQXRCLHNCQUFzQixDQUF3QjtJQUFHLENBQUM7SUFFeEUsUUFBUTtRQUNOLElBQUksQ0FBQyxVQUFVLEdBQUcsSUFBSSxDQUFDLHNCQUFzQixDQUFDLFVBQVUsQ0FBQztJQUMzRCxDQUFDO0lBRUQsTUFBTTtRQUNKLElBQUksQ0FBQyxzQkFBc0IsQ0FBQyxVQUFVLEVBQUUsQ0FBQztJQUMzQyxDQUFDOzs7WUFaRixTQUFTOzs7WUFGRCxzQkFBc0IiLCJzb3VyY2VzQ29udGVudCI6WyJpbXBvcnQgeyBPbkluaXQsIERpcmVjdGl2ZSB9IGZyb20gJ0Bhbmd1bGFyL2NvcmUnO1xuaW1wb3J0IHsgT2JzZXJ2YWJsZSB9IGZyb20gJ3J4anMnO1xuaW1wb3J0IHsgQWRkVG9Ib21lU2NyZWVuU2VydmljZSB9IGZyb20gJy4uL3NlcnZpY2VzL2FkZC10by1ob21lLXNjcmVlbi5zZXJ2aWNlJztcblxuQERpcmVjdGl2ZSgpXG4vLyB0c2xpbnQ6ZGlzYWJsZS1uZXh0LWxpbmU6ZGlyZWN0aXZlLWNsYXNzLXN1ZmZpeFxuZXhwb3J0IGFic3RyYWN0IGNsYXNzIEFkZFRvSG9tZVNjcmVlbkNvbXBvbmVudCBpbXBsZW1lbnRzIE9uSW5pdCB7XG4gIGNhblByb21wdCQ6IE9ic2VydmFibGU8Ym9vbGVhbj47XG4gIGNvbnN0cnVjdG9yKHByb3RlY3RlZCBhZGRUb0hvbWVTY3JlZW5TZXJ2aWNlOiBBZGRUb0hvbWVTY3JlZW5TZXJ2aWNlKSB7fVxuXG4gIG5nT25Jbml0KCk6IHZvaWQge1xuICAgIHRoaXMuY2FuUHJvbXB0JCA9IHRoaXMuYWRkVG9Ib21lU2NyZWVuU2VydmljZS5jYW5Qcm9tcHQkO1xuICB9XG5cbiAgcHJvbXB0KCk6IHZvaWQge1xuICAgIHRoaXMuYWRkVG9Ib21lU2NyZWVuU2VydmljZS5maXJlUHJvbXB0KCk7XG4gIH1cbn1cbiJdfQ==
